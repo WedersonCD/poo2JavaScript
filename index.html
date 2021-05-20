@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script  type="text/javascript">
+            function changeBackgroundColor(color){
+
+                document.getElementById("corpo").style.backgroundColor = color;
+
+            }
+
+            function calcular(){
+
+                //Criando array com os 3 valores
+                values=[]
+                values.push(document.getElementById("value1").value)
+                values.push(document.getElementById("value2").value)
+                values.push(document.getElementById("value3").value)
+
+                //Funcoes de calculo
+                soma = function(acumulado,atual){
+                    return parseInt(acumulado)+parseInt(atual);
+                }
+
+                produto =function(acumulado,atual){
+                    return acumulado* atual;
+                }
+
+                maior = function(anterior, atual){
+                    return (anterior > atual) ? anterior : atual;
+                }
+
+                menor = function(anterior, atual){
+                    return (anterior < atual) ? anterior : atual;
+                }
+
+                //Alterando o innerHtml dos dados da tabela
+                document.getElementById("numeros").innerHTML = values.toString()
+                document.getElementById("soma").innerHTML = values.reduce(soma)
+                document.getElementById("media").innerHTML = values.reduce(soma)/3
+                document.getElementById("produto").innerHTML = values.reduce(produto)
+                document.getElementById("maior").innerHTML = values.reduce(maior)
+                document.getElementById("menor").innerHTML = values.reduce(menor)
+
+
+            }
+        </script>
+    </head>
+    <body id="corpo">
+        <input type="button" value="blue" onClick="changeBackgroundColor('blue')">
+        <input type="button" value="green" onClick="changeBackgroundColor('green')">
+        <input type="button" value="red" onClick="changeBackgroundColor('red')">
+        <input type="button" value="yellow" onClick="changeBackgroundColor('yellow')">
+        <br>
+        <br>
+        <br>
+
+        <form>
+            <label> Entre o valor1<input id="value1" type="text" ></label><br>
+            <label> Entre o valor2<input id="value2" type="text" ></label><br>
+            <label> Entre o valor3<input id="value3" type="text" ></label>
+            <br>
+            <br>
+            <input type="button" value="calcular" onClick="calcular()">
+        </form>
+
+        <H3>Resultado:</H3>
+        <table style="border: 1px solid;">
+            <tr>
+                <th>Numeros</th>
+                <th>soma</th>
+                <th>media</th>
+                <th>produto</th>
+                <th>maior</th>
+                <th>menor</th>
+            </tr>
+            <tr>
+                <td id="numeros"></td>
+                <td id="soma"></td>
+                <td id="media"></td>
+                <td id="produto"></td>
+                <td id="maior"></td>
+                <td id="menor"></td>
+
+            </tr>
+        </table>
+    </body>
+</html>
